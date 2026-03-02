@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Our 7 Beautiful Months ❤️</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+font-family:'Segoe UI',sans-serif;
+background:#0d0d0d;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* LOGIN */
+#login{
+margin-top:20%;
+}
+
+input{
+padding:12px;
+border-radius:25px;
+border:none;
+width:220px;
+text-align:center;
+}
+
+button{
+padding:12px 25px;
+margin-top:15px;
+border-radius:25px;
+border:none;
+background:#ff4da6;
+color:white;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
+}
+
+button:hover{
+background:white;
+color:#ff4da6;
+}
+
+/* MAIN */
+#mainContent{
+display:none;
+padding:30px 15px;
+animation:fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+h1{
+color:#ff66b2;
+margin-bottom:5px;
+}
+
+h2{
+color:#ff99cc;
+margin-top:0;
+}
+
+#counter{
+margin:15px 0;
+font-size:18px;
+color:#ffb3d9;
+}
+
+#message{
+max-width:600px;
+margin:20px auto;
+font-size:18px;
+line-height:1.8;
+color:#ffffff;
+}
+
+/* SLIDESHOW */
+.slideshow{
+margin-top:20px;
+}
+
+.slideshow img{
+width:280px;
+border-radius:20px;
+box-shadow:0 0 20px #ff4da6;
+transition:1s;
+}
+
+/* HEARTS */
+.heart{
+position:fixed;
+color:#ff1a75;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="login">
+<h2>🔐 Private Anniversary Surprise</h2>
+<p>Password enter karo 💖</p>
+<input type="password" id="password" placeholder="Enter Password">
+<br>
+<button onclick="checkPassword()">Unlock ❤️</button>
+<p id="error" style="color:#ff4d4d;"></p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent">
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Happy 7 Month Anniversary My Love ❤️</h1>
+<h2>(Mera Pyara Baccha)</h2>
+
+<div id="counter"></div>
+
+<div id="message"></div>
+
+<div class="slideshow">
+<img id="slide" src="photo1.jpg">
+</div>
+
+<br><br>
+
+<button onclick="finalMessage()">Ek Mauka Aur? 💍</button>
+
+</div>
+
+<script>
+
+/* PASSWORD */
+function checkPassword(){
+var pass=document.getElementById("password").value;
+if(pass==="Shona"){
+document.getElementById("login").style.display="none";
+document.getElementById("mainContent").style.display="block";
+startTyping();
+}else{
+document.getElementById("error").innerText="Hint: Jo naam main pyaar se bulata hoon ❤️";
+}
+}
+
+/* TYPEWRITER TEXT */
+var text=`7 months pehle aap meri life mein officially aayi thi…
+
+Lekin sach kahun…
+Dil ne aapko usse pehle hi apna maan liya tha…
+
+Aap sirf meri girlfriend nahi ho…
+Aap mera sukoon ho, meri dua ho,
+Aur meri wife ho 💍❤️
+
+Thank you meri life mein rehne ke liye.
+I promise… main hamesha aapke saath rahunga.
+
+I Love You Forever, Ardhangini Jii 💖🧿♾️`;
+
+var i=0;
+function startTyping(){
+if(i<text.length){
+document.getElementById("message").innerHTML+=text.charAt(i);
+i++;
+setTimeout(startTyping,35);
+}
+}
+
+/* SLIDESHOW 4 PHOTOS */
+var images=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"];
+var index=0;
+
+setInterval(function(){
+index=(index+1)%images.length;
+document.getElementById("slide").src=images[index];
+},3000);
+
+/* HEARTS */
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,400);
+
+/* COUNTER FROM 3 AUGUST 2025 */
+var startDate=new Date("August 3, 2025 00:00:00").getTime();
+
+setInterval(function(){
+var now=new Date().getTime();
+var diff=now-startDate;
+var days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("counter").innerHTML=
+"Hum saath hain: "+days+" days ❤️";
+},1000);
+
+/* FINAL BUTTON */
+function finalMessage(){
+alert("Main perfect nahi hoon… par aapke liye har din better banna chahta hoon. Bas saath chahiye ❤️");
+}
+
+</script>
+
+</body>
+</html>
